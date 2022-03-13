@@ -1,0 +1,868 @@
+<html>
+
+<head>
+    <title>Movie Recommendation Study</title>
+
+    <!--JS-->
+
+    <!-- external general utilities -->
+    <script src="shared/jquery-1.11.1.min.js"></script>
+    <script src="shared/jquery-ui.min.js"></script>
+    <script src="shared/underscore-min.js"></script>
+    <!-- if you want to draw stuff: -->
+    <!-- <script src="_shared/js/raphael-min.js"></script> -->
+
+    <!-- cocolab experiment logic -->
+    <script src="shared/exp-V2.js"></script>
+    <script src="shared/stream-V2.js"></script>
+
+    <!-- cocolab general utilities -->
+    <script src="shared/mmturkey.js "></script>
+    <script src="shared/browserCheck.js"></script>
+    <script src="shared/utils.js"></script>
+    <script src="shared/uniqueturker.js"></script>
+    <!-- if you want to draw cute creatures (depends on raphael): -->
+    <!-- <script src="_shared/js/ecosystem.js"></script> -->
+    <!-- experiment specific helper functions -->
+    <!-- <script src="js/local-utils.js"></script> -->
+
+    <!--CSS-->
+    <link href="shared/jquery-ui.min.css" rel="stylesheet" type="text/css"/>
+    <link href="shared/cocolab-style.css" rel="stylesheet" type="text/css"/>
+    <link href="css/local-style.css" rel="stylesheet" type="text/css"/>
+
+    <!-- experiment file -->
+    <script src="js/scl.js"></script>
+
+
+</head>
+
+<body onload="init(); delay(100)">
+  <noscript>This task requires JavaScript.</noscript>
+
+  <div class="slide" id="i0" >
+    <img src="media/nus-logo.jpg" alt="NUS" id="cocologo"></img>
+    <p id="cocolab">National University of Singapore</p>
+    <p id="instruct-text">In this study, you will be presented with a movie recommendations and asked to watch their trailers if you like the recommendation. The study duration largely depends on the number of trailers you choose to watch. On average, the study takes between 15-30 minutes to complete.</p>
+    <p> No identification information will be collected and all demographic questions are optional. You may withdraw from the project
+      at any time, without giving any reasons, even after beginning the study. All data that you have provided will be discarded and will not be used by the research team. 
+      For further information regarding this study, you may read the participant information below or contact Dennis Teo 
+      at <a href="mailto://dennisteowh@u.nus.edu">dennisteowh@u.nus.edu</a>.</p> <br>
+   
+   
+    <p> If you consent to taking part in this study, please click "Start Experiment" to indicate your consent and begin the study. </p>
+    <button id="start_button" type="button">Start Experiment</button>
+
+  </div>
+
+  <div class="slide" id="botcaptcha">
+    <h3>Are you a bot?</h3>
+    <div id="bot_context"> </div>
+    <input type="text" id="botresponse" size="30"></input>
+    <button onclick="_s.button()" id="bot_button">Continue</button>
+    <p class="text" id="error_incorrect" style="color: #7CB637">This is incorrect.</p>
+    <p class="text" id="error_2more" style="color: #7CB637">You have 2 more trials.</p>
+    <p class="text" id="error_1more" style="color: #7CB637">You have 1 more trial.</p>
+    <p class="text" id="error" style="color: #7CB637">Error: You failed the comprehension questions too many times.
+    You are not permitted to complete the HIT. Please click 'Return HIT' to avoid any impact on your approval rating.
+    <br/><br/>
+    If you believe you are receiving thin message in error, please email <a href="mailto:tessler@mit.edu">tessler@mit.edu</a> </p>
+  </div>
+
+
+  <div class="slide" id="instructions">
+    <p>In this study, you will be presented with approximately 20 movie recommendations.<br> <br>
+      On each page, you will be shown the <b>title of the movie</b> as well as some <b>text sharing why that movie is worth watching</b>.<br> <br>
+      To view the recommender text, <b>hover your cursor</b> over the title of the movie (you can test this out in the "Skyscraper" example below). <br> <br>
+      <b>Note that this study cannot be done on mobile devices</b> as you would need a cursor to view the text.<br> <br> 
+      If you like the given recommendation, you can click the <b>watch trailer</b> button to watch the accompanying movie trailer.<br> <br> 
+      Otherwise, you can simply <b>skip to the next page</b> to view the next set of recommendations. <br> <br>
+      <button class="movieI" onmouseover="_s.revealI()" onmouseout="_s.unrevealI()">Skyscraper</button>
+      <div class="contentContainerI">
+        <div id = "skyscraperText" class= "textI"></div>
+      </div>
+      <button class = "trailerI" onclick="_s.forwardI()">Watch Trailer</button>
+    </p>
+       
+    <button onclick="_s.button()">Continue</button>
+  </div>
+
+  <div class="slide" id="recommendA1">
+    <button class="movieL" onmouseover="_s.revealL()" onmouseout="_s.unrevealL()">Greenland</button>
+    <button class="movieC" onmouseover="_s.revealC()" onmouseout="_s.unrevealC()">The Outpost</button>
+    <button class="movieR" onmouseover="_s.revealR()" onmouseout="_s.unrevealR()">The Magnificent Seven</button>
+    <div class="contentContainerL">
+      <div id = "greenlandText" class= "textL"></div>
+    </div>
+    <div class="contentContainerC">
+      <div id = "theoutpostText" class= "textC"></div>
+    </div>
+    <div class="contentContainerR">
+      <div id = "themagnificentsevenText" class= "textR"></div>
+    </div>
+    <button class = "trailerL" onclick="_s.forwardL()">Watch Trailer</button>
+    <button class = "trailerC" onclick="_s.forwardC()">Watch Trailer</button>
+    <button class = "trailerR" onclick="_s.forwardR()">Watch Trailer</button>
+    <button class = "skipButton" onclick="_s.button()">Skip to Next Page</button>
+  </div>
+
+  <div class="slide" id="recommendA2">
+    <button class="movieL" onmouseover="_s.revealL()" onmouseout="_s.unrevealL()">The Accountant</button>
+    <button class="movieC" onmouseover="_s.revealC()" onmouseout="_s.unrevealC()">Operation Finale</button>
+    <button class="movieR" onmouseover="_s.revealR()" onmouseout="_s.unrevealR()">Run All Night</button>
+    <div class="contentContainerL">
+      <div id = "theaccountantText" class= "textL"></div>
+    </div>
+    <div class="contentContainerC">
+      <div id = "operationfinaleText" class= "textC"></div>
+    </div>
+    <div class="contentContainerR">
+      <div id = "runallnightText" class= "textR"></div>
+    </div>
+    <button class = "trailerL" onclick="_s.forwardL()">Watch Trailer</button>
+    <button class = "trailerC" onclick="_s.forwardC()">Watch Trailer</button>
+    <button class = "trailerR" onclick="_s.forwardR()">Watch Trailer</button>
+    <button class = "skipButton" onclick="_s.button()">Skip to Next Page</button>
+  </div>
+
+  <div class="slide" id="recommendA3">
+    <button class="movieL" onmouseover="_s.revealL()" onmouseout="_s.unrevealL()">Nobody</button>
+    <button class="movieC" onmouseover="_s.revealC()" onmouseout="_s.unrevealC()">Boss Level</button>
+    <button class="movieR" onmouseover="_s.revealR()" onmouseout="_s.unrevealR()">The Harder They Fall</button>
+    <div class="contentContainerL">
+      <div id = "nobodyText" class= "textL"></div>
+    </div>
+    <div class="contentContainerC">
+      <div id = "bosslevelText" class= "textC"></div>
+    </div>
+    <div class="contentContainerR">
+      <div id = "thehardertheyfallText" class= "textR"></div>
+    </div>
+    <button class = "trailerL" onclick="_s.forwardL()">Watch Trailer</button>
+    <button class = "trailerC" onclick="_s.forwardC()">Watch Trailer</button>
+    <button class = "trailerR" onclick="_s.forwardR()">Watch Trailer</button>
+    <button class = "skipButton" onclick="_s.button()">Skip to Next Page</button>
+  </div>
+
+  <div class="slide" id="recommendB1">
+    <button class="movieC" onmouseover="_s.revealC()" onmouseout="_s.unrevealC()">San Andreas</button>
+    <div class="contentContainerC">
+      <div id = "sanandreasText" class= "textC"></div>
+    </div>
+    <button class = "trailerC" onclick="_s.forwardC()">Watch Trailer</button>
+    <button class = "skipButton" onclick="_s.button(pos)">Skip to Next Page</button>
+  </div>
+
+  <div class="slide" id="recommendB2">
+    <button class="movieC" onmouseover="_s.revealC()" onmouseout="_s.unrevealC()">Midway</button>
+    <div class="contentContainerC">
+      <div id = "midwayText" class= "textC"></div>
+    </div>
+    <button class = "trailerC" onclick="_s.forwardC()">Watch Trailer</button>
+    <button class = "skipButton" onclick="_s.button(pos)">Skip to Next Page</button>
+  </div>
+
+  <div class="slide" id="recommendB3">
+    <button class="movieC" onmouseover="_s.revealC()" onmouseout="_s.unrevealC()">The Lost City of Z</button>
+    <div class="contentContainerC">
+      <div id = "thelostcityofzText" class= "textC"></div>
+    </div>
+    <button class = "trailerC" onclick="_s.forwardC()">Watch Trailer</button>
+    <button class = "skipButton" onclick="_s.button(pos)">Skip to Next Page</button>
+  </div>
+
+  <div class="slide" id="recommendB4">
+    <button class="movieC" onmouseover="_s.revealC()" onmouseout="_s.unrevealC()">The Tax Collector</button>
+    <div class="contentContainerC">
+      <div id = "thetaxcollectorText" class= "textC"></div>
+    </div>
+    <button class = "trailerC" onclick="_s.forwardC()">Watch Trailer</button>
+    <button class = "skipButton" onclick="_s.button(pos)">Skip to Next Page</button>
+  </div>
+
+  <div class="slide" id="recommendB5">
+    <button class="movieC" onmouseover="_s.revealC()" onmouseout="_s.unrevealC()">Hunter Killer</button>
+    <div class="contentContainerC">
+      <div id = "hunterkillerText" class= "textC"></div>
+    </div>
+    <button class = "trailerC" onclick="_s.forwardC()">Watch Trailer</button>
+    <button class = "skipButton" onclick="_s.button(pos)">Skip to Next Page</button>
+  </div>
+
+  <div class="slide" id="recommendB6">
+    <button class="movieC" onmouseover="_s.revealC()" onmouseout="_s.unrevealC()">Jason Bourne</button>
+    <div class="contentContainerC">
+      <div id = "jasonbourneText" class= "textC"></div>
+    </div>
+    <button class = "trailerC" onclick="_s.forwardC()">Watch Trailer</button>
+    <button class = "skipButton" onclick="_s.button(pos)">Skip to Next Page</button>
+  </div>
+
+  <div class="slide" id="recommendB7">
+    <button class="movieC" onmouseover="_s.revealC()" onmouseout="_s.unrevealC()">Bad Boys for Life</button>
+    <div class="contentContainerC">
+      <div id = "badboysforlifeText" class= "textC"></div>
+    </div>
+    <button class = "trailerC" onclick="_s.forwardC()">Watch Trailer</button>
+    <button class = "skipButton" onclick="_s.button(pos)">Skip to Next Page</button>
+  </div>
+
+  <div class="slide" id="recommendB8">
+    <button class="movieC" onmouseover="_s.revealC()" onmouseout="_s.unrevealC()">Copshop</button>
+    <div class="contentContainerC">
+      <div id = "copshopText" class= "textC"></div>
+    </div>
+    <button class = "trailerC" onclick="_s.forwardC()">Watch Trailer</button>
+    <button class = "skipButton" onclick="_s.button(pos)">Skip to Next Page</button>
+  </div>
+
+  <div class="slide" id="recommendB9">
+    <button class="movieC" onmouseover="_s.revealC()" onmouseout="_s.unrevealC()">Those Who Wish Me Dead</button>
+    <div class="contentContainerC">
+      <div id = "thosewhowishmedeadText" class= "textC"></div>
+    </div>
+    <button class = "trailerC" onclick="_s.forwardC()">Watch Trailer</button>
+    <button class = "skipButton" onclick="_s.button(pos)">Skip to Next Page</button>
+  </div>
+
+  <div class="slide" id="recommendD1">
+    <button class="movieL" onmouseover="_s.revealL()" onmouseout="_s.unrevealL()">San Andreas</button>
+    <button class="movieC" onmouseover="_s.revealC()" onmouseout="_s.unrevealC()">Midway</button>
+    <button class="movieR" onmouseover="_s.revealR()" onmouseout="_s.unrevealR()">The Lost City of Z</button>
+    <div class="contentContainerL">
+      <div id = "sanandreasText2" class= "textL"></div>
+    </div>
+    <div class="contentContainerC">
+      <div id = "midwayText2" class= "textC"></div>
+    </div>
+    <div class="contentContainerR">
+      <div id = "thelostcityofzText2" class= "textR"></div>
+    </div>
+    <button class = "trailerL" onclick="_s.forwardL()">Watch Trailer</button>
+    <button class = "trailerC" onclick="_s.forwardC()">Watch Trailer</button>
+    <button class = "trailerR" onclick="_s.forwardR()">Watch Trailer</button>
+    <button class = "skipButton" onclick="_s.button()">Skip to Next Page</button>
+  </div>
+
+  <div class="slide" id="recommendD2">
+    <button class="movieL" onmouseover="_s.revealL()" onmouseout="_s.unrevealL()">The Tax Collector</button>
+    <button class="movieC" onmouseover="_s.revealC()" onmouseout="_s.unrevealC()">Hunter Killer</button>
+    <button class="movieR" onmouseover="_s.revealR()" onmouseout="_s.unrevealR()">Jason Bourne</button>
+    <div class="contentContainerL">
+      <div id = "thetaxcollectorText2" class= "textL"></div>
+    </div>
+    <div class="contentContainerC">
+      <div id = "hunterkillerText2" class= "textC"></div>
+    </div>
+    <div class="contentContainerR">
+      <div id = "jasonbourneText2" class= "textR"></div>
+    </div>
+    <button class = "trailerL" onclick="_s.forwardL()">Watch Trailer</button>
+    <button class = "trailerC" onclick="_s.forwardC()">Watch Trailer</button>
+    <button class = "trailerR" onclick="_s.forwardR()">Watch Trailer</button>
+    <button class = "skipButton" onclick="_s.button()">Skip to Next Page</button>
+  </div>
+
+  <div class="slide" id="recommendD3">
+    <button class="movieL" onmouseover="_s.revealL()" onmouseout="_s.unrevealL()">Bad Boys for Life</button>
+    <button class="movieC" onmouseover="_s.revealC()" onmouseout="_s.unrevealC()">Copshop</button>
+    <button class="movieR" onmouseover="_s.revealR()" onmouseout="_s.unrevealR()">Those Who Wish Me Dead</button>
+    <div class="contentContainerL">
+      <div id = "badboysforlifeText2" class= "textL"></div>
+    </div>
+    <div class="contentContainerC">
+      <div id = "copshopText2" class= "textC"></div>
+    </div>
+    <div class="contentContainerR">
+      <div id = "thosewhowishmedeadText2" class= "textR"></div>
+    </div>
+    <button class = "trailerL" onclick="_s.forwardL()">Watch Trailer</button>
+    <button class = "trailerC" onclick="_s.forwardC()">Watch Trailer</button>
+    <button class = "trailerR" onclick="_s.forwardR()">Watch Trailer</button>
+    <button class = "skipButton" onclick="_s.button()">Skip to Next Page</button>
+  </div>
+
+  <div class="slide" id="recommendC1">
+    <button class="movieC" onmouseover="_s.revealC()" onmouseout="_s.unrevealC()">Greenland</button>
+    <div class="contentContainerC">
+      <div id = "greenlandText2" class= "textC"></div>
+    </div>
+    <button class = "trailerC" onclick="_s.forwardC()">Watch Trailer</button>
+    <button class = "skipButton" onclick="_s.button(pos)">Skip to Next Page</button>
+  </div>
+
+  <div class="slide" id="recommendC2">
+    <button class="movieC" onmouseover="_s.revealC()" onmouseout="_s.unrevealC()">The Outpost</button>
+    <div class="contentContainerC">
+      <div id = "theoutpostText2" class= "textC"></div>
+    </div>
+    <button class = "trailerC" onclick="_s.forwardC()">Watch Trailer</button>
+    <button class = "skipButton" onclick="_s.button(pos)">Skip to Next Page</button>
+  </div>
+
+  <div class="slide" id="recommendC3">
+    <button class="movieC" onmouseover="_s.revealC()" onmouseout="_s.unrevealC()">The Magnificent Seven</button>
+    <div class="contentContainerC">
+      <div id = "themagnificentsevenText2" class= "textC"></div>
+    </div>
+    <button class = "trailerC" onclick="_s.forwardC()">Watch Trailer</button>
+    <button class = "skipButton" onclick="_s.button(pos)">Skip to Next Page</button>
+  </div>
+
+  <div class="slide" id="recommendC4">
+    <button class="movieC" onmouseover="_s.revealC()" onmouseout="_s.unrevealC()">The Accountant</button>
+    <div class="contentContainerC">
+      <div id = "theaccountantText2" class= "textC"></div>
+    </div>
+    <button class = "trailerC" onclick="_s.forwardC()">Watch Trailer</button>
+    <button class = "skipButton" onclick="_s.button(pos)">Skip to Next Page</button>
+  </div>
+
+  <div class="slide" id="recommendC5">
+    <button class="movieC" onmouseover="_s.revealC()" onmouseout="_s.unrevealC()">Operation Finale</button>
+    <div class="contentContainerC">
+      <div id = "operationfinaleText2" class= "textC"></div>
+    </div>
+    <button class = "trailerC" onclick="_s.forwardC()">Watch Trailer</button>
+    <button class = "skipButton" onclick="_s.button(pos)">Skip to Next Page</button>
+  </div>
+
+  <div class="slide" id="recommendC6">
+    <button class="movieC" onmouseover="_s.revealC()" onmouseout="_s.unrevealC()">Run All Night</button>
+    <div class="contentContainerC">
+      <div id = "runallnightText2" class= "textC"></div>
+    </div>
+    <button class = "trailerC" onclick="_s.forwardC()">Watch Trailer</button>
+    <button class = "skipButton" onclick="_s.button(pos)">Skip to Next Page</button>
+  </div>
+
+  <div class="slide" id="recommendC7">
+    <button class="movieC" onmouseover="_s.revealC()" onmouseout="_s.unrevealC()">Nobody</button>
+    <div class="contentContainerC">
+      <div id = "nobodyText2" class= "textC"></div>
+    </div>
+    <button class = "trailerC" onclick="_s.forwardC()">Watch Trailer</button>
+    <button class = "skipButton" onclick="_s.button(pos)">Skip to Next Page</button>
+  </div>
+
+  <div class="slide" id="recommendC8">
+    <button class="movieC" onmouseover="_s.revealC()" onmouseout="_s.unrevealC()">Boss Level</button>
+    <div class="contentContainerC">
+      <div id = "bosslevelText2" class= "textC"></div>
+    </div>
+    <button class = "trailerC" onclick="_s.forwardC()">Watch Trailer</button>
+    <button class = "skipButton" onclick="_s.button(pos)">Skip to Next Page</button>
+  </div>
+
+  <div class="slide" id="recommendC9">
+    <button class="movieC" onmouseover="_s.revealC()" onmouseout="_s.unrevealC()">The Harder They Fall</button>
+    <div class="contentContainerC">
+      <div id = "thehardertheyfallText2" class= "textC"></div>
+    </div>
+    <button class = "trailerC" onclick="_s.forwardC()">Watch Trailer</button>
+    <button class = "skipButton" onclick="_s.button(pos)">Skip to Next Page</button>
+  </div>
+
+  <div class="slide" id="skyscraperSlide">
+    <video controls width = "1200", id = "skyscraper" preload="auto">
+      <source src="media/skyscraper.mp4" type ="video/mp4">
+        <p>your browser doesn't support HTML video.</p>
+    </video>
+    <button onclick="backI(pos)">Back to Previous Page</button>
+  </div>
+
+  <div class="slide" id="greenlandSlide">
+    <iframe width="841" height="473" src="https://www.youtube.com/embed/RTODtIQQRpA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;" allowfullscreen></iframe>
+    <button onclick="backA1(pos)">Back to Previous Page</button>
+  </div>
+
+  <div class="slide" id="theoutpostSlide">
+    <iframe width="841" height="473" src="https://www.youtube.com/embed/f4LM9a02q9Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="backA1(pos)">Back to Previous Page</button>
+  </div>
+
+  <div class="slide" id="themagnificentsevenSlide">
+    <iframe width="841" height="473" src="https://www.youtube.com/embed/q-RBA0xoaWU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="backA1(pos)">Back to Previous Page</button>
+  </div>
+
+  <div class="slide" id="theaccountantSlide">
+    <iframe width="841" height="357" src="https://www.youtube.com/embed/DBfsgcswlYQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="backA2(pos)">Back to Previous Page</button>
+  </div>
+
+  <div class="slide" id="operationfinaleSlide">
+    <iframe width="841" height="473" src="https://www.youtube.com/embed/07Y4_6PD0Z4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="backA2(pos)">Back to Previous Page</button>
+  </div>
+
+  <div class="slide" id="runallnightSlide">
+    <iframe width="841" height="357" src="https://www.youtube.com/embed/7uDuFh-nC-c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="backA2(pos)">Back to Previous Page</button>
+  </div>
+
+  <div class="slide" id="nobodySlide">
+    <iframe width="841" height="473" src="https://www.youtube.com/embed/wZti8QKBWPo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="backA3(pos)">Back to Previous Page</button>
+  </div>
+
+  <div class="slide" id="bosslevelSlide">
+    <iframe width="841" height="473" src="https://www.youtube.com/embed/9mkiY-37OG4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="backA3(pos)">Back to Previous Page</button>
+  </div>
+
+  <div class="slide" id="thehardertheyfallSlide">
+    <iframe width="841" height="473" src="https://www.youtube.com/embed/Poc55U2RPMw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="backA3(pos)">Back to Previous Page</button>
+  </div>
+
+
+  <div class="slide" id="greenlandSlide2">
+    <iframe width="841" height="473" src="https://www.youtube.com/embed/RTODtIQQRpA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;" allowfullscreen></iframe>
+    <button onclick="backC1(pos)">Back to Previous Page</button>
+  </div>
+
+  <div class="slide" id="theoutpostSlide2">
+    <iframe width="841" height="473" src="https://www.youtube.com/embed/f4LM9a02q9Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="backC2(pos)">Back to Previous Page</button>
+  </div>
+
+  <div class="slide" id="themagnificentsevenSlide2">
+    <iframe width="841" height="473" src="https://www.youtube.com/embed/q-RBA0xoaWU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="backC3(pos)">Back to Previous Page</button>
+  </div>
+
+  <div class="slide" id="theaccountantSlide2">
+    <iframe width="841" height="357" src="https://www.youtube.com/embed/DBfsgcswlYQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="backC4(pos)">Back to Previous Page</button>
+  </div>
+
+  <div class="slide" id="operationfinaleSlide2">
+    <iframe width="841" height="473" src="https://www.youtube.com/embed/07Y4_6PD0Z4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="backC5(pos)">Back to Previous Page</button>
+  </div>
+
+  <div class="slide" id="runallnightSlide2">
+    <iframe width="841" height="357" src="https://www.youtube.com/embed/7uDuFh-nC-c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="backC6(pos)">Back to Previous Page</button>
+  </div>
+
+  <div class="slide" id="nobodySlide2">
+    <iframe width="841" height="473" src="https://www.youtube.com/embed/wZti8QKBWPo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="backC7(pos)">Back to Previous Page</button>
+  </div>
+
+  <div class="slide" id="bosslevelSlide2">
+    <iframe width="841" height="473" src="https://www.youtube.com/embed/9mkiY-37OG4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="backC8(pos)">Back to Previous Page</button>
+  </div>
+
+  <div class="slide" id="thehardertheyfallSlide2">
+    <iframe width="841" height="473" src="https://www.youtube.com/embed/Poc55U2RPMw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="backC9(pos)">Back to Previous Page</button>
+  </div>
+
+
+  <div class="slide" id="sanandreasSlide">
+    <iframe width="841" height="473" src="https://www.youtube.com/embed/yftHosO0eUo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="backB1(pos)">Back to Previous Page</button>
+  </div>
+
+  <div class="slide" id="midwaySlide">
+    <iframe width="841" height="473" src="https://www.youtube.com/embed/BfTYY_pac8o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="backB2(pos)">Back to Previous Page</button>
+  </div>
+
+  <div class="slide" id="thelostcityofzSlide">
+    <iframe width="841" height="473" src="https://www.youtube.com/embed/yqGDNvX1F4g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="backB3(pos)">Back to Previous Page</button>
+  </div>
+
+  <div class="slide" id="thetaxcollectorSlide">
+    <iframe width="841" height="473" src="https://www.youtube.com/embed/F8s4PZ0JENc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="backB4(pos)">Back to Previous Page</button>
+  </div>
+
+  <div class="slide" id="hunterkillerSlide">
+    <iframe width="841" height="473" src="https://www.youtube.com/embed/mnP_z3qXDCQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="backB5(pos)">Back to Previous Page</button>
+  </div>
+
+  <div class="slide" id="jasonbourneSlide">
+    <iframe width="841" height="473" src="https://www.youtube.com/embed/v71ce1Dqqns" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="backB6(pos)">Back to Previous Page</button>
+  </div>
+
+  <div class="slide" id="badboysforlifeSlide">
+    <iframe width="841" height="473" src="https://www.youtube.com/embed/jKCj3XuPG8M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="backB7(pos)">Back to Previous Page</button>
+  </div>
+
+  <div class="slide" id="copshopSlide">
+    <iframe width="841" height="473" src="https://www.youtube.com/embed/ezHiQwwzEjU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="backB8(pos)">Back to Previous Page</button>
+  </div>
+
+  <div class="slide" id="thosewhowishmedeadSlide">
+    <iframe width="841" height="473" src="https://www.youtube.com/embed/sV6VNNjBkcE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="backB9(pos)">Back to Previous Page</button>
+  </div>
+
+  <div class="slide" id="sanandreasSlide2">
+    <iframe width="841" height="473" src="https://www.youtube.com/embed/yftHosO0eUo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="backD1(pos)">Back to Previous Page</button>
+  </div>
+
+  <div class="slide" id="midwaySlide2">
+    <iframe width="841" height="473" src="https://www.youtube.com/embed/BfTYY_pac8o" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="backD1(pos)">Back to Previous Page</button>
+  </div>
+
+  <div class="slide" id="thelostcityofzSlide2">
+    <iframe width="841" height="473" src="https://www.youtube.com/embed/yqGDNvX1F4g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="backD1(pos)">Back to Previous Page</button>
+  </div>
+
+  <div class="slide" id="thetaxcollectorSlide2">
+    <iframe width="841" height="473" src="https://www.youtube.com/embed/F8s4PZ0JENc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="backD2(pos)">Back to Previous Page</button>
+  </div>
+
+  <div class="slide" id="hunterkillerSlide2">
+    <iframe width="841" height="473" src="https://www.youtube.com/embed/mnP_z3qXDCQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="backD2(pos)">Back to Previous Page</button>
+  </div>
+
+  <div class="slide" id="jasonbourneSlide2">
+    <iframe width="841" height="473" src="https://www.youtube.com/embed/v71ce1Dqqns" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="backD2(pos)">Back to Previous Page</button>
+  </div>
+
+  <div class="slide" id="badboysforlifeSlide2">
+    <iframe width="841" height="473" src="https://www.youtube.com/embed/jKCj3XuPG8M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="backD3(pos)">Back to Previous Page</button>
+  </div>
+
+  <div class="slide" id="copshopSlide2">
+    <iframe width="841" height="473" src="https://www.youtube.com/embed/ezHiQwwzEjU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="backD3(pos)">Back to Previous Page</button>
+  </div>
+
+  <div class="slide" id="thosewhowishmedeadSlide2">
+    <iframe width="841" height="473" src="https://www.youtube.com/embed/sV6VNNjBkcE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <button onclick="backD3(pos)">Back to Previous Page</button>
+  </div>
+
+
+<div class="slide" id="movieMatrix">
+  <p>For each of the movies below, please indicate if you have some knowledge about the movie prior to this study.</p>
+  <table>   
+    <tr>
+      <th></th>
+      <th>No</th>
+      <th>Yes</th>
+    </tr>
+    <tr> 
+      <th><div class="checkboxtable">
+        <p>Greenland</p>
+      </div></th> 
+      <td><div class="checkboxtable">
+        <input type="radio" name="A1prior" value="0">
+      </div></td> 
+      <td><div class="checkboxtable">
+        <input type="radio" name="A1prior" value="1">
+      </div></td> 
+      </tr>
+
+      <tr> 
+        <th><div class="checkboxtable">
+          <p>The Outpost</p>
+        </div></th> 
+        <td><div class="checkboxtable">
+          <input type="radio" name="A2prior" value="0">
+        </div></td> 
+        <td><div class="checkboxtable">
+          <input type="radio" name="A2prior" value="1">
+        </div></td> 
+        </tr>
+
+        <tr> 
+          <th><div class="checkboxtable">
+            <p>The Magnificent Seven</p>
+          </div></th> 
+          <td><div class="checkboxtable">
+            <input type="radio" name="A3prior" value="0">
+          </div></td> 
+          <td><div class="checkboxtable">
+            <input type="radio" name="A3prior" value="1">
+          </div></td> 
+          </tr>
+
+          <tr> 
+            <th><div class="checkboxtable">
+              <p>The Accountant</p>
+            </div></th> 
+            <td><div class="checkboxtable">
+              <input type="radio" name="A4prior" value="0">
+            </div></td> 
+            <td><div class="checkboxtable">
+              <input type="radio" name="A4prior" value="1">
+            </div></td> 
+            </tr>
+
+            <tr> 
+              <th><div class="checkboxtable">
+                <p>Operation Finale</p>
+              </div></th> 
+              <td><div class="checkboxtable">
+                <input type="radio" name="A5prior" value="0">
+              </div></td> 
+              <td><div class="checkboxtable">
+                <input type="radio" name="A5prior" value="1">
+              </div></td> 
+              </tr>
+
+              <tr> 
+                <th><div class="checkboxtable">
+                  <p>Run All Night</p>
+                </div></th> 
+                <td><div class="checkboxtable">
+                  <input type="radio" name="A6prior" value="0">
+                </div></td> 
+                <td><div class="checkboxtable">
+                  <input type="radio" name="A6prior" value="1">
+                </div></td> 
+                </tr>
+
+                <tr> 
+                  <th><div class="checkboxtable">
+                    <p>Nobody</p>
+                  </div></th> 
+                  <td><div class="checkboxtable">
+                    <input type="radio" name="A7prior" value="0">
+                  </div></td> 
+                  <td><div class="checkboxtable">
+                    <input type="radio" name="A7prior" value="1">
+                  </div></td> 
+                  </tr>
+
+                  <tr> 
+                    <th><div class="checkboxtable">
+                      <p>Boss Level</p>
+                    </div></th> 
+                    <td><div class="checkboxtable">
+                      <input type="radio" name="A8prior" value="0">
+                    </div></td> 
+                    <td><div class="checkboxtable">
+                      <input type="radio" name="A8prior" value="1">
+                    </div></td> 
+                    </tr>
+
+                    <tr> 
+                      <th><div class="checkboxtable">
+                        <p>The Harder They Fall</p>
+                      </div></th> 
+                      <td><div class="checkboxtable">
+                        <input type="radio" name="A9prior" value="0">
+                      </div></td> 
+                      <td><div class="checkboxtable">
+                        <input type="radio" name="A9prior" value="1">
+                      </div></td> 
+                      </tr>
+
+                      <tr> 
+                        <th><div class="checkboxtable">
+                          <p>San Andreas</p>
+                        </div></th> 
+                        <td><div class="checkboxtable">
+                          <input type="radio" name="B1prior" value="0">
+                        </div></td> 
+                        <td><div class="checkboxtable">
+                          <input type="radio" name="B1prior" value="1">
+                        </div></td> 
+                        </tr>
+                  
+                        <tr> 
+                          <th><div class="checkboxtable">
+                            <p>Midway</p>
+                          </div></th> 
+                          <td><div class="checkboxtable">
+                            <input type="radio" name="B2prior" value="0">
+                          </div></td> 
+                          <td><div class="checkboxtable">
+                            <input type="radio" name="B2prior" value="1">
+                          </div></td> 
+                          </tr>
+                  
+                          <tr> 
+                            <th><div class="checkboxtable">
+                              <p>The Lost City of Z</p>
+                            </div></th> 
+                            <td><div class="checkboxtable">
+                              <input type="radio" name="B3prior" value="0">
+                            </div></td> 
+                            <td><div class="checkboxtable">
+                              <input type="radio" name="B3prior" value="1">
+                            </div></td> 
+                            </tr>
+                  
+                            <tr> 
+                              <th><div class="checkboxtable">
+                                <p>The Tax Collector</p>
+                              </div></th> 
+                              <td><div class="checkboxtable">
+                                <input type="radio" name="B4prior" value="0">
+                              </div></td> 
+                              <td><div class="checkboxtable">
+                                <input type="radio" name="B4prior" value="1">
+                              </div></td> 
+                              </tr>
+                  
+                              <tr> 
+                                <th><div class="checkboxtable">
+                                  <p>Hunter Killer</p>
+                                </div></th> 
+                                <td><div class="checkboxtable">
+                                  <input type="radio" name="B5prior" value="0">
+                                </div></td> 
+                                <td><div class="checkboxtable">
+                                  <input type="radio" name="B5prior" value="1">
+                                </div></td> 
+                                </tr>
+                  
+                                <tr> 
+                                  <th><div class="checkboxtable">
+                                    <p>Jason Bourne</p>
+                                  </div></th> 
+                                  <td><div class="checkboxtable">
+                                    <input type="radio" name="B6prior" value="0">
+                                  </div></td> 
+                                  <td><div class="checkboxtable">
+                                    <input type="radio" name="B6prior" value="1">
+                                  </div></td> 
+                                  </tr>
+                  
+                                  <tr> 
+                                    <th><div class="checkboxtable">
+                                      <p>Bad Boys for Life</p>
+                                    </div></th> 
+                                    <td><div class="checkboxtable">
+                                      <input type="radio" name="B7prior" value="0">
+                                    </div></td> 
+                                    <td><div class="checkboxtable">
+                                      <input type="radio" name="B7prior" value="1">
+                                    </div></td> 
+                                    </tr>
+                  
+                                    <tr> 
+                                      <th><div class="checkboxtable">
+                                        <p>Copshop</p>
+                                      </div></th> 
+                                      <td><div class="checkboxtable">
+                                        <input type="radio" name="B8prior" value="0">
+                                      </div></td> 
+                                      <td><div class="checkboxtable">
+                                        <input type="radio" name="B8prior" value="1">
+                                      </div></td> 
+                                      </tr>
+                  
+                                      <tr> 
+                                        <th><div class="checkboxtable">
+                                          <p>Those Who Wish Me Dead</p>
+                                        </div></th> 
+                                        <td><div class="checkboxtable">
+                                          <input type="radio" name="B9prior" value="0">
+                                        </div></td> 
+                                        <td><div class="checkboxtable">
+                                          <input type="radio" name="B9prior" value="1">
+                                        </div></td> 
+                                        </tr>
+  
+
+    </table>
+  <button onclick="_s.button()">Continue</button>
+</div>
+
+  <!--demographics-->
+
+  <div class="slide"  id="subj_info">
+    <div class="long_form">
+      <div class="subj_info_title">Additional information</div>
+      <p class="info">Answering these questions is optional, but will help us understand your answers.</p>
+
+      <p>Gender:
+        <select id="gender">
+          <label><option value=""/></label>
+          <label><option value="Male"/>Male</label>
+          <label><option value="Female"/>Female</label>
+          <label><option value="Other"/>Other</label>
+          <label><option value="Hide"/>Do not wish to disclose</label>
+        </select>
+      </p>
+
+      <p>Age: <input type="text" id="age"/></p>
+
+      <p>What is your ethnicity?:
+        <select id="ethnicity">
+          <label><option value="-1"/></label>
+          <label><option value="chinese"/>Chinese</label>
+          <label><option value="malay"/>Malay</label>
+          <label><option value="indian"/>Indian</label>
+          <label><option value="other"/>Other</label>
+        </select>
+      </p>
+
+      <p>What is your citizenship status?:
+        <select id="citizenship">
+          <label><option value="-1"/></label>
+          <label><option value="ct"/>Singapore Citizen</label>
+          <label><option value="pr"/>Singapore PR</label>
+          <label><option value="nc"/>Non-Citizen</label>
+        </select>
+      </p>
+
+      <p>What is the highest degree you have received?:
+        <select id="degree">
+          <label><option value="-1"/></label>
+          <label><option value="1"/>Primary (PSLE)</label>
+          <label><option value="2"/>Secondary ('N', 'O' levels)</label>
+          <label><option value="3"/>'A' levels</label>
+          <label><option value="4"/>Polytechnic Diploma</label>
+          <label><option value="5"/>Professional qualification and other diploma (ITE diploma, NIE diploma, SIM diploma, or other advanced diploma, post-diploma qualifications)</label>
+          <label><option value="6"/>Bachelor's or equivalent</label>
+          <label><option value="7"/>Post-graduate Diploma/Certificate (PGDE)</label>
+          <label><option value="8"/>Masters degree</label>
+          <label><option value="9"/>Doctorate degree</label>
+          <label><option value="10"/>Other</label>
+        </select>
+      </p>
+
+
+      <p>We would be interested in any comments or issues you found about this experiment. Please type them here:</p>
+      <textarea id="comments" rows="3" cols="50"></textarea>
+      <br/>
+      <button onclick="_s.submit()">Submit</button>
+      <div class="err">Please input a number for your age.</div>
+    </div>
+  </div>
+
+  <div id="thanks" class="slide js" >
+    <p  class="big">Thank you for your Time!</p><br>
+  </div>
+
+  <div class="progress">
+    <span>Progress:</span>
+    <div class="bar-wrapper">
+      <div class="bar" width="0%">
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+</body>
+</html>
