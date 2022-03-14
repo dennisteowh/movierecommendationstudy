@@ -68,7 +68,7 @@ function make_slides(f) {
     },
     forwardR : function() {
       $('.slide').hide(); 
-      $('#themagnificentsevenSlide').show()
+      $('#runallnightSlide').show()
       movieA3_watchstart = Date.now()
       pos = "R"
     },
@@ -81,7 +81,7 @@ function make_slides(f) {
       this.readStartC = Date.now();
     },
     revealR: function() {
-      document.getElementById("themagnificentsevenText").innerHTML = "Modern-day western action film. This movie is absolutely a must-see. From the Acting, Writing, Cinematography the whole movie is amazing!";
+      document.getElementById("runallnightText").innerHTML = "One man versus bad guys and I am all about it. This one does a little bit of a better job and fleshing out the main character and what he's fighting for.";
       this.readStartR = Date.now();
     },
     unrevealL: function() {
@@ -93,7 +93,7 @@ function make_slides(f) {
       this.readTimeC = this.readTimeC + Date.now() - this.readStartC
     },
     unrevealR: function() {
-      document.getElementById("themagnificentsevenText").innerHTML = "";
+      document.getElementById("runallnightText").innerHTML = "";
       this.readTimeR = this.readTimeR + Date.now() - this.readStartR
     },
     button : function() {
@@ -121,89 +121,24 @@ function make_slides(f) {
     readStartR:0,
     forwardL : function() {
       $('.slide').hide(); 
-      $('#theaccountantSlide').show()
+      $('#nobodySlide').show()
       movieA4_watchstart = Date.now()
       pos = "L"
     },
     forwardC : function() {
       $('.slide').hide(); 
-      $('#operationfinaleSlide').show()
+      $('#bosslevelSlide').show()
       movieA5_watchstart = Date.now()
       pos = "C"
     },
     forwardR : function() {
       $('.slide').hide(); 
-      $('#runallnightSlide').show()
+      $('#thehardertheyfallSlide').show()
       movieA6_watchstart = Date.now()
       pos = "R"
     },
     revealL: function() {
-      document.getElementById("theaccountantText").innerHTML = "An autistic hero using his analytical gifts for good. It grabs you from the beginning and you want to watch it again and again to see if there was anything you might of missed.";
-      this.readStartL = Date.now();
-    },
-    revealC: function() {
-      document.getElementById("operationfinaleText").innerHTML = "A well done movie that tells a very important true story of the capture of Adolf Eichmann. Would recommend to anyone and watch again.";
-      this.readStartC = Date.now();
-    },
-    revealR: function() {
-      document.getElementById("runallnightText").innerHTML = "One man versus bad guys and I am all about it. This one does a little bit of a better job and fleshing out the main character and what he's fighting for.";
-      this.readStartR = Date.now();
-    },
-    unrevealL: function() {
-      document.getElementById("theaccountantText").innerHTML = "";
-      this.readTimeL = this.readTimeL + Date.now() - this.readStartL
-    },
-    unrevealC: function() {
-      document.getElementById("operationfinaleText").innerHTML = "";
-      this.readTimeC = this.readTimeC + Date.now() - this.readStartC
-    },
-    unrevealR: function() {
-      document.getElementById("runallnightText").innerHTML = "";
-      this.readTimeR = this.readTimeR + Date.now() - this.readStartR
-    },
-    button : function() {
-      append(exp.data, 
-        {
-          movieA4_readtime: this.readTimeL,
-          movieA5_readtime: this.readTimeC,
-          movieA6_readtime: this.readTimeR,
-          movieA4_watchtime: movieA4_watchtime,
-          movieA5_watchtime: movieA5_watchtime,
-          movieA6_watchtime: movieA6_watchtime
-      }
-      )
-      exp.go(); //use exp.go() if and only if there is no "present" data.
-    }
-  })
-
-  slides.recommendA3 = slide({
-    name:"recommendA3",
-    readTimeL:0,
-    readTimeC:0,
-    readTimeR:0,
-    readStartL:0,
-    readStartC:0,
-    readStartR:0,
-    forwardL : function() {
-      $('.slide').hide(); 
-      $('#nobodySlide').show()
-      movieA7_watchstart = Date.now()
-      pos = "L"
-    },
-    forwardC : function() {
-      $('.slide').hide(); 
-      $('#bosslevelSlide').show()
-      movieA8_watchstart = Date.now()
-      pos = "C"
-    },
-    forwardR : function() {
-      $('.slide').hide(); 
-      $('#thehardertheyfallSlide').show()
-      movieA9_watchstart = Date.now()
-      pos = "R"
-    },
-    revealL: function() {
-      document.getElementById("nobodyText").innerHTML = "Some shoot-em-up movies try to break the mold and do too much…don’t worry…Nobody isn’t one of them. The arc of the protagonist was just original enough to make it engaging.";
+      document.getElementById("nobodyText").innerHTML = "Some shoot-em-up movies try to break the mold and do too much... don't worry... Nobody isn't one of them. The arc of the protagonist was just original enough to make it engaging.";
       this.readStartL = Date.now();
     },
     revealC: function() {
@@ -229,12 +164,12 @@ function make_slides(f) {
     button : function() {
       append(exp.data, 
         {
-          movieA7_readtime: this.readTimeL,
-          movieA8_readtime: this.readTimeC,
-          movieA9_readtime: this.readTimeR,
-          movieA7_watchtime: movieA7_watchtime,
-          movieA8_watchtime: movieA8_watchtime,
-          movieA9_watchtime: movieA9_watchtime
+          movieA4_readtime: this.readTimeL,
+          movieA5_readtime: this.readTimeC,
+          movieA6_readtime: this.readTimeR,
+          movieA4_watchtime: movieA4_watchtime,
+          movieA5_watchtime: movieA5_watchtime,
+          movieA6_watchtime: movieA6_watchtime
       }
       )
       exp.go(); //use exp.go() if and only if there is no "present" data.
@@ -263,7 +198,7 @@ function make_slides(f) {
     },
     forwardR : function() {
       $('.slide').hide(); 
-      $('#thelostcityofzSlide2').show()
+      $('#jasonbourneSlide2').show()
       movieD3_watchstart = Date.now()
       pos = "R"
     },
@@ -276,7 +211,7 @@ function make_slides(f) {
       this.readStartC = Date.now();
     },
     revealR: function() {
-      document.getElementById("thelostcityofzText2").innerHTML = "This movie is about the social sciences and the courageous men and women who risked their lives to make discoveries. An all around great film with great writing and settings!";
+      document.getElementById("jasonbourneText2").innerHTML = "Absolutely the BEST if you love suspense and thriller. Matt Damon (Jason Bourne) and the rest of cast was amazing. I expect to see this series on and on again.";
       this.readStartR = Date.now();
     },
     unrevealL: function() {
@@ -288,7 +223,7 @@ function make_slides(f) {
       this.readTimeC = this.readTimeC + Date.now() - this.readStartC
     },
     unrevealR: function() {
-      document.getElementById("thelostcityofzText2").innerHTML = "";
+      document.getElementById("jasonbourneText2").innerHTML = "";
       this.readTimeR = this.readTimeR + Date.now() - this.readStartR
     },
     button : function() {
@@ -316,85 +251,20 @@ function make_slides(f) {
     readStartR:0,
     forwardL : function() {
       $('.slide').hide(); 
-      $('#thetaxcollectorSlide2').show()
+      $('#badboysforlifeSlide2').show()
       movieD4_watchstart = Date.now()
       pos = "L"
     },
     forwardC : function() {
       $('.slide').hide(); 
-      $('#hunterkillerSlide2').show()
+      $('#copshopSlide2').show()
       movieD5_watchstart = Date.now()
       pos = "C"
     },
     forwardR : function() {
       $('.slide').hide(); 
-      $('#jasonbourneSlide2').show()
-      movieD6_watchstart = Date.now()
-      pos = "R"
-    },
-    revealL: function() {
-      document.getElementById("thetaxcollectorText2").innerHTML = "The Tax Collector is a stylish and entertaining movie exploring the underbelly of gangland LA. Very suspenseful, great acting, had me at the edge of my seat, and overall very entertaining.";
-      this.readStartL = Date.now();
-    },
-    revealC: function() {
-      document.getElementById("hunterkillerText2").innerHTML = "Despite the whole American's-are-the-heroes-and-they-save-the-day theme, I did enjoy this movie! Total edge of your seat thrill ride! Loved it!";
-      this.readStartC = Date.now();
-    },
-    revealR: function() {
-      document.getElementById("jasonbourneText2").innerHTML = "Absolutely the BEST if you love suspense and thriller. Matt Damon (Jason Bourne) and the rest of cast was amazing. I expect to see this series on and on again.";
-      this.readStartR = Date.now();
-    },
-    unrevealL: function() {
-      document.getElementById("thetaxcollectorText2").innerHTML = "";
-      this.readTimeL = this.readTimeL + Date.now() - this.readStartL
-    },
-    unrevealC: function() {
-      document.getElementById("hunterkillerText2").innerHTML = "";
-      this.readTimeC = this.readTimeC + Date.now() - this.readStartC
-    },
-    unrevealR: function() {
-      document.getElementById("jasonbourneText2").innerHTML = "";
-      this.readTimeR = this.readTimeR + Date.now() - this.readStartR
-    },
-    button : function() {
-      append(exp.data, 
-        {
-          movieD4_readtime: this.readTimeL,
-          movieD5_readtime: this.readTimeC,
-          movieD6_readtime: this.readTimeR,
-          movieD4_watchtime: movieD4_watchtime,
-          movieD5_watchtime: movieD5_watchtime,
-          movieD6_watchtime: movieD6_watchtime
-      }
-      )
-      exp.go(); //use exp.go() if and only if there is no "present" data.
-    }
-  })
-
-  slides.recommendD3 = slide({
-    name:"recommendD3",
-    readTimeL:0,
-    readTimeC:0,
-    readTimeR:0,
-    readStartL:0,
-    readStartC:0,
-    readStartR:0,
-    forwardL : function() {
-      $('.slide').hide(); 
-      $('#badboysforlifeSlide2').show()
-      movieD7_watchstart = Date.now()
-      pos = "L"
-    },
-    forwardC : function() {
-      $('.slide').hide(); 
-      $('#copshopSlide2').show()
-      movieD8_watchstart = Date.now()
-      pos = "C"
-    },
-    forwardR : function() {
-      $('.slide').hide(); 
       $('#thosewhowishmedeadSlide2').show()
-      movieD9_watchstart = Date.now()
+      movieD6_watchstart = Date.now()
       pos = "R"
     },
     revealL: function() {
@@ -424,12 +294,12 @@ function make_slides(f) {
     button : function() {
       append(exp.data, 
         {
-          movieD7_readtime: this.readTimeL,
-          movieD8_readtime: this.readTimeC,
-          movieD9_readtime: this.readTimeR,
-          movieD7_watchtime: movieD7_watchtime,
-          movieD8_watchtime: movieD8_watchtime,
-          movieD9_watchtime: movieD9_watchtime
+          movieD4_readtime: this.readTimeL,
+          movieD5_readtime: this.readTimeC,
+          movieD6_readtime: this.readTimeR,
+          movieD4_watchtime: movieD4_watchtime,
+          movieD5_watchtime: movieD5_watchtime,
+          movieD6_watchtime: movieD6_watchtime
       }
       )
       exp.go(); //use exp.go() if and only if there is no "present" data.
@@ -500,16 +370,16 @@ function make_slides(f) {
     readStartC:0,
     forwardC : function() {
       $('.slide').hide(); 
-      $('#thelostcityofzSlide').show()
+      $('#jasonbourneSlide').show()
       movieB3_watchstart = Date.now()
       pos = "C"
     },
     revealC: function() {
-      document.getElementById("thelostcityofzText").innerHTML = "This movie is about the social sciences and the courageous men and women who risked their lives to make discoveries. An all around great film with great writing and settings!";
+      document.getElementById("jasonbourneText").innerHTML = "Absolutely the BEST if you love suspense and thriller. Matt Damon (Jason Bourne) and the rest of cast was amazing. I expect to see this series on and on again.";
       this.readStartC = Date.now();
     },
     unrevealC: function() {
-      document.getElementById("thelostcityofzText").innerHTML = "";
+      document.getElementById("jasonbourneText").innerHTML = "";
       this.readTimeC = this.readTimeC + Date.now() - this.readStartC
     },
     button : function() {
@@ -529,16 +399,16 @@ function make_slides(f) {
     readStartC:0,
     forwardC : function() {
       $('.slide').hide(); 
-      $('#thetaxcollectorSlide').show()
+      $('#badboysforlifeSlide').show()
       movieB4_watchstart = Date.now()
       pos = "C"
     },
     revealC: function() {
-      document.getElementById("thetaxcollectorText").innerHTML = "The Tax Collector is a stylish and entertaining movie exploring the underbelly of gangland LA. Very suspenseful, great acting, had me at the edge of my seat, and overall very entertaining.";
+      document.getElementById("badboysforlifeText").innerHTML = "Nice and funny film that with a formula already seen many times manages to surprise and entertain. The film is well acted and well shot, each scene is fun and very beautiful.";
       this.readStartC = Date.now();
     },
     unrevealC: function() {
-      document.getElementById("thetaxcollectorText").innerHTML = "";
+      document.getElementById("badboysforlifeText").innerHTML = "";
       this.readTimeC = this.readTimeC + Date.now() - this.readStartC
     },
     button : function() {
@@ -558,16 +428,16 @@ function make_slides(f) {
     readStartC:0,
     forwardC : function() {
       $('.slide').hide(); 
-      $('#hunterkillerSlide').show()
+      $('#copshopSlide').show()
       movieB5_watchstart = Date.now()
       pos = "C"
     },
     revealC: function() {
-      document.getElementById("hunterkillerText").innerHTML = "Despite the whole American's-are-the-heroes-and-they-save-the-day theme, I did enjoy this movie! Total edge of your seat thrill ride! Loved it!";
+      document.getElementById("copshopText").innerHTML = "Wonderfully fun action flick. It's a condensed Die-Hard kind of thriller, jam-packed with interesting character actors, in the midst of snarky comedy and brutal action. I loved it.";
       this.readStartC = Date.now();
     },
     unrevealC: function() {
-      document.getElementById("hunterkillerText").innerHTML = "";
+      document.getElementById("copshopText").innerHTML = "";
       this.readTimeC = this.readTimeC + Date.now() - this.readStartC
     },
     button : function() {
@@ -587,95 +457,8 @@ function make_slides(f) {
     readStartC:0,
     forwardC : function() {
       $('.slide').hide(); 
-      $('#jasonbourneSlide').show()
-      movieB6_watchstart = Date.now()
-      pos = "C"
-    },
-    revealC: function() {
-      document.getElementById("jasonbourneText").innerHTML = "Absolutely the BEST if you love suspense and thriller. Matt Damon (Jason Bourne) and the rest of cast was amazing. I expect to see this series on and on again.";
-      this.readStartC = Date.now();
-    },
-    unrevealC: function() {
-      document.getElementById("jasonbourneText").innerHTML = "";
-      this.readTimeC = this.readTimeC + Date.now() - this.readStartC
-    },
-    button : function() {
-      append(exp.data, 
-        {
-          movieB6_readtime: this.readTimeC,
-          movieB6_watchtime: movieB6_watchtime,
-      }
-      )
-      exp.go(); //use exp.go() if and only if there is no "present" data.
-    }
-  })
-
-  slides.recommendB7 = slide({
-    name:"recommendB7",
-    readTimeC:0,
-    readStartC:0,
-    forwardC : function() {
-      $('.slide').hide(); 
-      $('#badboysforlifeSlide').show()
-      movieB7_watchstart = Date.now()
-      pos = "C"
-    },
-    revealC: function() {
-      document.getElementById("badboysforlifeText").innerHTML = "Nice and funny film that with a formula already seen many times manages to surprise and entertain. The film is well acted and well shot, each scene is fun and very beautiful.";
-      this.readStartC = Date.now();
-    },
-    unrevealC: function() {
-      document.getElementById("badboysforlifeText").innerHTML = "";
-      this.readTimeC = this.readTimeC + Date.now() - this.readStartC
-    },
-    button : function() {
-      append(exp.data, 
-        {
-          movieB7_readtime: this.readTimeC,
-          movieB7_watchtime: movieB7_watchtime,
-      }
-      )
-      exp.go(); //use exp.go() if and only if there is no "present" data.
-    }
-  })
-
-  slides.recommendB8 = slide({
-    name:"recommendB8",
-    readTimeC:0,
-    readStartC:0,
-    forwardC : function() {
-      $('.slide').hide(); 
-      $('#copshopSlide').show()
-      movieB8_watchstart = Date.now()
-      pos = "C"
-    },
-    revealC: function() {
-      document.getElementById("copshopText").innerHTML = "Wonderfully fun action flick. It's a condensed Die-Hard kind of thriller, jam-packed with interesting character actors, in the midst of snarky comedy and brutal action. I loved it.";
-      this.readStartC = Date.now();
-    },
-    unrevealC: function() {
-      document.getElementById("copshopText").innerHTML = "";
-      this.readTimeC = this.readTimeC + Date.now() - this.readStartC
-    },
-    button : function() {
-      append(exp.data, 
-        {
-          movieB8_readtime: this.readTimeC,
-          movieB8_watchtime: movieB8_watchtime,
-      }
-      )
-      exp.go(); //use exp.go() if and only if there is no "present" data.
-    }
-  })
-
-  slides.recommendB9 = slide({
-    name:"recommendB9",
-    readTimeC:0,
-    readStartC:0,
-    forwardC : function() {
-      $('.slide').hide(); 
       $('#thosewhowishmedeadSlide').show()
-      movieB9_watchstart = Date.now()
+      movieB6_watchstart = Date.now()
       pos = "C"
     },
     revealC: function() {
@@ -689,8 +472,8 @@ function make_slides(f) {
     button : function() {
       append(exp.data, 
         {
-          movieB9_readtime: this.readTimeC,
-          movieB9_watchtime: movieB9_watchtime,
+          movieB6_readtime: this.readTimeC,
+          movieB6_watchtime: movieB6_watchtime,
       }
       )
       exp.go(); //use exp.go() if and only if there is no "present" data.
@@ -761,16 +544,16 @@ function make_slides(f) {
     readStartC:0,
     forwardC : function() {
       $('.slide').hide(); 
-      $('#themagnificentsevenSlide2').show()
+      $('#runallnightSlide2').show()
       movieC3_watchstart = Date.now()
       pos = "C"
     },
     revealC: function() {
-      document.getElementById("themagnificentsevenText2").innerHTML = "Modern-day western action film. This movie is absolutely a must-see. From the Acting, Writing, Cinematography the whole movie is amazing!";
+      document.getElementById("runallnightText2").innerHTML = "One man versus bad guys and I am all about it. This one does a little bit of a better job and fleshing out the main character and what he's fighting for.";
       this.readStartC = Date.now();
     },
     unrevealC: function() {
-      document.getElementById("themagnificentsevenText2").innerHTML = "";
+      document.getElementById("runallnightText2").innerHTML = "";
       this.readTimeC = this.readTimeC + Date.now() - this.readStartC
     },
     button : function() {
@@ -790,16 +573,16 @@ function make_slides(f) {
     readStartC:0,
     forwardC : function() {
       $('.slide').hide(); 
-      $('#theaccountantSlide2').show()
+      $('#nobodySlide2').show()
       movieC4_watchstart = Date.now()
       pos = "C"
     },
     revealC: function() {
-      document.getElementById("theaccountantText2").innerHTML = "An autistic hero using his analytical gifts for good. It grabs you from the beginning and you want to watch it again and again to see if there was anything you might of missed.";
+      document.getElementById("nobodyText2").innerHTML = "Some shoot-em-up movies try to break the mold and do too much... don't worry... Nobody isn't one of them. The arc of the protagonist was just original enough to make it engaging.";
       this.readStartC = Date.now();
     },
     unrevealC: function() {
-      document.getElementById("theaccountantText2").innerHTML = "";
+      document.getElementById("nobodyText2").innerHTML = "";
       this.readTimeC = this.readTimeC + Date.now() - this.readStartC
     },
     button : function() {
@@ -819,16 +602,16 @@ function make_slides(f) {
     readStartC:0,
     forwardC : function() {
       $('.slide').hide(); 
-      $('#operationfinaleSlide2').show()
+      $('#bosslevelSlide2').show()
       movieC5_watchstart = Date.now()
       pos = "C"
     },
     revealC: function() {
-      document.getElementById("operationfinaleText2").innerHTML = "A well done movie that tells a very important true story of the capture of Adolf Eichmann. Would recommend to anyone and watch again.";
+      document.getElementById("bosslevelText2").innerHTML = "A compelling story about love and redemption. Everyone on-screen is clearly having a blast, and their enthusiasm is contagious, making this film just plain fun to watch.";
       this.readStartC = Date.now();
     },
     unrevealC: function() {
-      document.getElementById("operationfinaleText2").innerHTML = "";
+      document.getElementById("bosslevelText2").innerHTML = "";
       this.readTimeC = this.readTimeC + Date.now() - this.readStartC
     },
     button : function() {
@@ -848,95 +631,8 @@ function make_slides(f) {
     readStartC:0,
     forwardC : function() {
       $('.slide').hide(); 
-      $('#runallnightSlide2').show()
-      movieC6_watchstart = Date.now()
-      pos = "C"
-    },
-    revealC: function() {
-      document.getElementById("runallnightText2").innerHTML = "One man versus bad guys and I am all about it. This one does a little bit of a better job and fleshing out the main character and what he's fighting for.";
-      this.readStartC = Date.now();
-    },
-    unrevealC: function() {
-      document.getElementById("runallnightText2").innerHTML = "";
-      this.readTimeC = this.readTimeC + Date.now() - this.readStartC
-    },
-    button : function() {
-      append(exp.data, 
-        {
-          movieC6_readtime: this.readTimeC,
-          movieC6_watchtime: movieC6_watchtime,
-      }
-      )
-      exp.go(); //use exp.go() if and only if there is no "present" data.
-    }
-  })
-
-  slides.recommendC7 = slide({
-    name:"recommendC7",
-    readTimeC:0,
-    readStartC:0,
-    forwardC : function() {
-      $('.slide').hide(); 
-      $('#nobodySlide2').show()
-      movieC7_watchstart = Date.now()
-      pos = "C"
-    },
-    revealC: function() {
-      document.getElementById("nobodyText2").innerHTML = "Some shoot-em-up movies try to break the mold and do too much…don’t worry…Nobody isn’t one of them. The arc of the protagonist was just original enough to make it engaging.";
-      this.readStartC = Date.now();
-    },
-    unrevealC: function() {
-      document.getElementById("nobodyText2").innerHTML = "";
-      this.readTimeC = this.readTimeC + Date.now() - this.readStartC
-    },
-    button : function() {
-      append(exp.data, 
-        {
-          movieC7_readtime: this.readTimeC,
-          movieC7_watchtime: movieC7_watchtime,
-      }
-      )
-      exp.go(); //use exp.go() if and only if there is no "present" data.
-    }
-  })
-
-  slides.recommendC8 = slide({
-    name:"recommendC8",
-    readTimeC:0,
-    readStartC:0,
-    forwardC : function() {
-      $('.slide').hide(); 
-      $('#bosslevelSlide2').show()
-      movieC8_watchstart = Date.now()
-      pos = "C"
-    },
-    revealC: function() {
-      document.getElementById("bosslevelText2").innerHTML = "A compelling story about love and redemption. Everyone on-screen is clearly having a blast, and their enthusiasm is contagious, making this film just plain fun to watch.";
-      this.readStartC = Date.now();
-    },
-    unrevealC: function() {
-      document.getElementById("bosslevelText2").innerHTML = "";
-      this.readTimeC = this.readTimeC + Date.now() - this.readStartC
-    },
-    button : function() {
-      append(exp.data, 
-        {
-          movieC8_readtime: this.readTimeC,
-          movieC8_watchtime: movieC8_watchtime,
-      }
-      )
-      exp.go(); //use exp.go() if and only if there is no "present" data.
-    }
-  })
-
-  slides.recommendC9 = slide({
-    name:"recommendC9",
-    readTimeC:0,
-    readStartC:0,
-    forwardC : function() {
-      $('.slide').hide(); 
       $('#thehardertheyfallSlide2').show()
-      movieC9_watchstart = Date.now()
+      movieC6_watchstart = Date.now()
       pos = "C"
     },
     revealC: function() {
@@ -950,8 +646,8 @@ function make_slides(f) {
     button : function() {
       append(exp.data, 
         {
-          movieC9_readtime: this.readTimeC,
-          movieC9_watchtime: movieC9_watchtime,
+          movieC6_readtime: this.readTimeC,
+          movieC6_watchtime: movieC6_watchtime,
       }
       )
       exp.go(); //use exp.go() if and only if there is no "present" data.
@@ -968,18 +664,6 @@ function make_slides(f) {
 
   slides.theoutpostSlide = slide({
     name:"theoutpostSlide"
-  })
-
-  slides.themagnificentsevenSlide = slide({
-    name:"themagnificentsevenSlide"
-  })
-
-  slides.theaccountantSlide = slide({
-    name:"theaccountantSlide"
-  })
-
-  slides.operationfinaleSlide = slide({
-    name:"operationfinaleSlide"
   })
 
   slides.runallnightSlide = slide({
@@ -1006,18 +690,6 @@ function make_slides(f) {
     name:"theoutpostSlide2"
   })
 
-  slides.themagnificentsevenSlide2 = slide({
-    name:"themagnificentsevenSlide2"
-  })
-
-  slides.theaccountantSlide2 = slide({
-    name:"theaccountantSlide2"
-  })
-
-  slides.operationfinaleSlide2 = slide({
-    name:"operationfinaleSlide2"
-  })
-
   slides.runallnightSlide2 = slide({
     name:"runallnightSlide2"
   })
@@ -1042,18 +714,6 @@ function make_slides(f) {
     name:"midwaySlide"
   })
 
-  slides.thelostcityofzSlide = slide({
-    name:"thelostcityofzSlide"
-  })
-
-  slides.thetaxcollectorSlide = slide({
-    name:"thetaxcollectorSlide"
-  })
-
-  slides.hunterkillerSlide = slide({
-    name:"hunterkillerSlide"
-  })
-
   slides.jasonbourneSlide = slide({
     name:"jasonbourneSlide"
   })
@@ -1076,18 +736,6 @@ function make_slides(f) {
 
   slides.midwaySlide2 = slide({
     name:"midwaySlide2"
-  })
-
-  slides.thelostcityofzSlide2 = slide({
-    name:"thelostcityofzSlide2"
-  })
-
-  slides.thetaxcollectorSlide2 = slide({
-    name:"thetaxcollectorSlide2"
-  })
-
-  slides.hunterkillerSlide2 = slide({
-    name:"hunterkillerSlide2"
   })
 
   slides.jasonbourneSlide2 = slide({
@@ -1153,18 +801,12 @@ function make_slides(f) {
           "A4prior" : $('input[name="A4prior"]:checked').val(),
           "A5prior" : $('input[name="A5prior"]:checked').val(),
           "A6prior" : $('input[name="A6prior"]:checked').val(),
-          "A7prior" : $('input[name="A7prior"]:checked').val(),
-          "A8prior" : $('input[name="A8prior"]:checked').val(),
-          "A9prior" : $('input[name="A9prior"]:checked').val(),
           "B1prior" : $('input[name="B1prior"]:checked').val(),
           "B2prior" : $('input[name="B2prior"]:checked').val(),
           "B3prior" : $('input[name="B3prior"]:checked').val(),
           "B4prior" : $('input[name="B4prior"]:checked').val(),
           "B5prior" : $('input[name="B5prior"]:checked').val(),
-          "B6prior" : $('input[name="B6prior"]:checked').val(),
-          "B7prior" : $('input[name="B7prior"]:checked').val(),
-          "B8prior" : $('input[name="B8prior"]:checked').val(),
-          "B9prior" : $('input[name="B9prior"]:checked').val()
+          "B6prior" : $('input[name="B6prior"]:checked').val()
         }
         )
   
@@ -1210,8 +852,6 @@ slides.subj_info =  slide({
     
   }
 });
-
-
 
 
   //////////////////////////////
@@ -1307,9 +947,6 @@ var movieA3_watchtime = 0
 var movieA4_watchtime = 0
 var movieA5_watchtime = 0
 var movieA6_watchtime = 0
-var movieA7_watchtime = 0
-var movieA8_watchtime = 0
-var movieA9_watchtime = 0
 
 var movieA1_watchstart = 0
 var movieA2_watchstart = 0
@@ -1317,9 +954,6 @@ var movieA3_watchstart = 0
 var movieA4_watchstart = 0
 var movieA5_watchstart = 0
 var movieA6_watchstart = 0
-var movieA7_watchstart = 0
-var movieA8_watchstart = 0
-var movieA9_watchstart = 0
 
 var movieB1_watchtime = 0
 var movieB2_watchtime = 0
@@ -1327,9 +961,6 @@ var movieB3_watchtime = 0
 var movieB4_watchtime = 0
 var movieB5_watchtime = 0
 var movieB6_watchtime = 0
-var movieB7_watchtime = 0
-var movieB8_watchtime = 0
-var movieB9_watchtime = 0
 
 var movieB1_watchstart = 0
 var movieB2_watchstart = 0
@@ -1337,9 +968,6 @@ var movieB3_watchstart = 0
 var movieB4_watchstart = 0
 var movieB5_watchstart = 0
 var movieB6_watchstart = 0
-var movieB7_watchstart = 0
-var movieB8_watchstart = 0
-var movieB9_watchstart = 0
 
 var movieC1_watchtime = 0
 var movieC2_watchtime = 0
@@ -1347,9 +975,6 @@ var movieC3_watchtime = 0
 var movieC4_watchtime = 0
 var movieC5_watchtime = 0
 var movieC6_watchtime = 0
-var movieC7_watchtime = 0
-var movieC8_watchtime = 0
-var movieC9_watchtime = 0
 
 var movieC1_watchstart = 0
 var movieC2_watchstart = 0
@@ -1357,9 +982,6 @@ var movieC3_watchstart = 0
 var movieC4_watchstart = 0
 var movieC5_watchstart = 0
 var movieC6_watchstart = 0
-var movieC7_watchstart = 0
-var movieC8_watchstart = 0
-var movieC9_watchstart = 0
 
 var movieD1_watchtime = 0
 var movieD2_watchtime = 0
@@ -1367,9 +989,6 @@ var movieD3_watchtime = 0
 var movieD4_watchtime = 0
 var movieD5_watchtime = 0
 var movieD6_watchtime = 0
-var movieD7_watchtime = 0
-var movieD8_watchtime = 0
-var movieD9_watchtime = 0
 
 var movieD1_watchstart = 0
 var movieD2_watchstart = 0
@@ -1377,9 +996,6 @@ var movieD3_watchstart = 0
 var movieD4_watchstart = 0
 var movieD5_watchstart = 0
 var movieD6_watchstart = 0
-var movieD7_watchstart = 0
-var movieD8_watchstart = 0
-var movieD9_watchstart = 0
 
 
 var pos
@@ -1407,7 +1023,7 @@ function backA1(pos) {
     videoStopper("theoutpostSlide")
     movieA2_watchtime = movieA2_watchtime + Date.now() - movieA2_watchstart
   }else if(pos =="R"){
-    videoStopper("themagnificentsevenSlide")
+    videoStopper("runallnightSlide")
     movieA3_watchtime = movieA3_watchtime + Date.now() - movieA3_watchstart
   }
 }
@@ -1416,29 +1032,14 @@ function backA2(pos) {
   $('.slide').hide(); 
   $('#recommendA2').show()
   if(pos == "L"){
-    videoStopper("theaccountantSlide")
+    videoStopper("nobodySlide")
     movieA4_watchtime = movieA4_watchtime + Date.now() - movieA4_watchstart
   }else if(pos =="C"){
-    videoStopper("operationfinaleSlide")
+    videoStopper("bosslevelSlide")
     movieA5_watchtime = movieA5_watchtime + Date.now() - movieA5_watchstart
   }else if(pos =="R"){
-    videoStopper("runallnightSlide")
-    movieA6_watchtime = movieA6_watchtime + Date.now() - movieA6_watchstart
-  }
-}
-
-function backA3(pos) {
-  $('.slide').hide(); 
-  $('#recommendA3').show()
-  if(pos == "L"){
-    videoStopper("nobodySlide")
-    movieA7_watchtime = movieA7_watchtime + Date.now() - movieA7_watchstart
-  }else if(pos =="C"){
-    videoStopper("bosslevelSlide")
-    movieA8_watchtime = movieA8_watchtime + Date.now() - movieA8_watchstart
-  }else if(pos =="R"){
     videoStopper("thehardertheyfallSlide")
-    movieA9_watchtime = movieA9_watchtime + Date.now() - movieA9_watchstart
+    movieA6_watchtime = movieA6_watchtime + Date.now() - movieA6_watchstart
   }
 }
 
@@ -1446,13 +1047,13 @@ function backD1(pos) {
   $('.slide').hide(); 
   $('#recommendD1').show()
   if(pos == "L"){
-    videoStopper("anandreasSlide2")
+    videoStopper("sanandreasSlide2")
     movieD1_watchtime = movieD1_watchtime + Date.now() - movieD1_watchstart
   }else if(pos =="C"){
     videoStopper("midwaySlide2")
     movieD2_watchtime = movieD2_watchtime + Date.now() - movieD2_watchstart
   }else if(pos =="R"){
-    videoStopper("thelostcityofzSlide2")
+    videoStopper("jasonbourneSlide2")
     movieD3_watchtime = movieD3_watchtime + Date.now() - movieD3_watchstart
   }
 }
@@ -1461,29 +1062,14 @@ function backD2(pos) {
   $('.slide').hide(); 
   $('#recommendD2').show()
   if(pos == "L"){
-    videoStopper("thetaxcollectorSlide2")
+    videoStopper("badboysforlifeSlide2")
     movieD4_watchtime = movieD4_watchtime + Date.now() - movieD4_watchstart
   }else if(pos =="C"){
-    videoStopper("hunterkillerSlide2")
+    videoStopper("copshopSlide2")
     movieD5_watchtime = movieD5_watchtime + Date.now() - movieD5_watchstart
   }else if(pos =="R"){
-    videoStopper("jasonbourneSlide2")
-    movieD6_watchtime = movieD6_watchtime + Date.now() - movieD6_watchstart
-  }
-}
-
-function backD3(pos) {
-  $('.slide').hide(); 
-  $('#recommendD3').show()
-  if(pos == "L"){
-    videoStopper("badboysforlifeSlide2")
-    movieD7_watchtime = movieD7_watchtime + Date.now() - movieD7_watchstart
-  }else if(pos =="C"){
-    videoStopper("copshopSlide2")
-    movieD8_watchtime = movieD8_watchtime + Date.now() - movieD8_watchstart
-  }else if(pos =="R"){
     videoStopper("thosewhowishmedeadSlide2")
-    movieD9_watchtime = movieD9_watchtime + Date.now() - movieD9_watchstart
+    movieD6_watchtime = movieD6_watchtime + Date.now() - movieD6_watchstart
   }
 }
 
@@ -1512,50 +1098,29 @@ function backB2(pos) {
 function backB3(pos) {
   $('.slide').hide(); 
   $('#recommendB3').show()
-  videoStopper("thelostcityofzSlide")
+  videoStopper("jasonbourneSlide")
   movieB3_watchtime = movieB3_watchtime + Date.now() - movieB3_watchstart
 }
 
 function backB4(pos) {
   $('.slide').hide(); 
   $('#recommendB4').show()
-  videoStopper("thetaxcollectorSlide")
+  videoStopper("badboysforlifeSlide")
   movieB4_watchtime = movieB4_watchtime + Date.now() - movieB4_watchstart
 }
 
 function backB5(pos) {
   $('.slide').hide(); 
   $('#recommendB5').show()
-  videoStopper("hunterkillerSlide")
+  videoStopper("copshopSlide")
   movieB5_watchtime = movieB5_watchtime + Date.now() - movieB5_watchstart
 }
 
 function backB6(pos) {
   $('.slide').hide(); 
   $('#recommendB6').show()
-  videoStopper("jasonbourneSlide")
-  movieB6_watchtime = movieB6_watchtime + Date.now() - movieB6_watchstart
-}
-
-function backB7(pos) {
-  $('.slide').hide(); 
-  $('#recommendB7').show()
-  videoStopper("badboysforlifeSlide")
-  movieB7_watchtime = movieB7_watchtime + Date.now() - movieB7_watchstart
-}
-
-function backB8(pos) {
-  $('.slide').hide(); 
-  $('#recommendB8').show()
-  videoStopper("copshopSlide")
-  movieB8_watchtime = movieB8_watchtime + Date.now() - movieB8_watchstart
-}
-
-function backB9(pos) {
-  $('.slide').hide(); 
-  $('#recommendB9').show()
   videoStopper("thosewhowishmedeadSlide")
-  movieB9_watchtime = movieB9_watchtime + Date.now() - movieB9_watchstart
+  movieB6_watchtime = movieB6_watchtime + Date.now() - movieB6_watchstart
 }
 
 function backC1(pos) {
@@ -1575,50 +1140,29 @@ function backC2(pos) {
 function backC3(pos) {
   $('.slide').hide(); 
   $('#recommendC3').show()
-  videoStopper("themagnificentseven2")
+  videoStopper("runallnightSlide2")
   movieC3_watchtime = movieC3_watchtime + Date.now() - movieC3_watchstart
 }
 
 function backC4(pos) {
   $('.slide').hide(); 
   $('#recommendC4').show()
-  videoStopper("theaccountantSlide2")
+  videoStopper("nobodySlide2")
   movieC4_watchtime = movieC4_watchtime + Date.now() - movieC4_watchstart
 }
 
 function backC5(pos) {
   $('.slide').hide(); 
   $('#recommendC5').show()
-  videoStopper("operationfinaleSlide2")
+  videoStopper("bosslevelSlide2")
   movieC5_watchtime = movieC5_watchtime + Date.now() - movieC5_watchstart
 }
 
 function backC6(pos) {
   $('.slide').hide(); 
   $('#recommendC6').show()
-  videoStopper("runallnightSlide2")
-  movieC6_watchtime = movieC6_watchtime + Date.now() - movieC6_watchstart
-}
-
-function backC7(pos) {
-  $('.slide').hide(); 
-  $('#recommendC7').show()
-  videoStopper("nobodySlide2")
-  movieC7_watchtime = movieC7_watchtime + Date.now() - movieC7_watchstart
-}
-
-function backC8(pos) {
-  $('.slide').hide(); 
-  $('#recommendC8').show()
-  videoStopper("bosslevelSlide2")
-  movieC8_watchtime = movieC8_watchtime + Date.now() - movieC8_watchstart
-}
-
-function backC9(pos) {
-  $('.slide').hide(); 
-  $('#recommendC9').show()
   videoStopper("thehardertheyfallSlide2")
-  movieC9_watchtime = movieC9_watchtime + Date.now() - movieC9_watchstart
+  movieC6_watchtime = movieC6_watchtime + Date.now() - movieC6_watchstart
 }
 
 /// init ///
@@ -1657,16 +1201,12 @@ function init() {
       "instructions",
       "recommendA1",
       "recommendA2",
-      "recommendA3",
       "recommendB1",
       "recommendB2",
       "recommendB3",
       "recommendB4",
       "recommendB5",
       "recommendB6",
-      "recommendB7",
-      "recommendB8",
-      "recommendB9",
       "movieMatrix",
       "subj_info",
       "thanks"
@@ -1683,12 +1223,8 @@ function init() {
       "recommendB4",
       "recommendB5",
       "recommendB6",
-      "recommendB7",
-      "recommendB8",
-      "recommendB9",
       "recommendA1",
       "recommendA2",
-      "recommendA3",
       "movieMatrix",
       "subj_info",
       "thanks"
@@ -1705,12 +1241,8 @@ function init() {
       "recommendC4",
       "recommendC5",
       "recommendC6",
-      "recommendC7",
-      "recommendC8",
-      "recommendC9",
       "recommendD1",
       "recommendD2",
-      "recommendD3",
       "movieMatrix",
       "subj_info",
       "thanks"
@@ -1723,16 +1255,12 @@ function init() {
       "instructions",
       "recommendD1",
       "recommendD2",
-      "recommendD3",
       "recommendC1",
       "recommendC2",
       "recommendC3",
       "recommendC4",
       "recommendC5",
       "recommendC6",
-      "recommendC7",
-      "recommendC8",
-      "recommendC9",
       "movieMatrix",
       "subj_info",
       "thanks"
